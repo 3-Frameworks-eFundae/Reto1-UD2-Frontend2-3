@@ -1,0 +1,31 @@
+<h2>{{ title }}</h2>
+
+<div>
+  <label for="filtro">Filtrar por: </label>
+  <select id="filtro" [(ngModel)]="filtro">
+    <option style="display: none;" disabled></option>
+    <option value="id">ID</option>
+    <option value="nombre">Nombre</option>
+    <option value="precio">Precio</option>
+    <option value="categoria">Categoria</option>
+  </select>
+  <label for="filtro">Que contenga: </label>
+  <input type="text" id="texto" [(ngModel)]="texto" placeholder="Ej: 1, B, 9.99, Producto D...">
+</div>
+<hr>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Nombre</th>
+    <th>Precio</th>
+    <th>Categoria</th>
+  </tr>
+  @for (elemento of listaProductos | filterBy:filtro:texto; track $index) {
+  <tr>
+    <td>{{ elemento.id }}</td>
+    <td>{{ elemento.nombre }}</td>
+    <td>{{ elemento.precio }}</td>
+    <td>{{ elemento.categoria }}</td>
+  </tr>
+  }
+</table>
