@@ -12,7 +12,7 @@ export class AppFilterPipe implements PipeTransform {
 
     let nuevaLista = filtro == "precio" || filtro == "id"
       ? listaProductos.filter(producto => producto[filtro] == texto) 
-      : listaProductos.filter(producto => producto.nombre.includes(texto));
+      : listaProductos.filter(producto => producto[filtro].toUpperCase().includes(texto.toUpperCase()));
 
     if (nuevaLista.length == 0) {
       return listaProductos;
